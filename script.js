@@ -1,11 +1,23 @@
 function swapValues() {
-    const value1 = document.getElementById('value1').value;
-    const value2 = document.getElementById('value2').value;
+    const value1Input = document.getElementById('value1');
+    const value2Input = document.getElementById('value2');
+    const value1 = value1Input.value;
+    const value2 = value2Input.value;
 
     if (value1 === '' || value2 === '') {
         alert('Please enter both values');
         return;
     }
+
+    // Add animation classes
+    value1Input.classList.add('swap-animate');
+    value2Input.classList.add('swap-animate');
+
+    // Remove animation class after animation ends
+    setTimeout(() => {
+        value1Input.classList.remove('swap-animate');
+        value2Input.classList.remove('swap-animate');
+    }, 600);
 
     // Update result display
     document.getElementById('result1').textContent = value2;
@@ -13,8 +25,8 @@ function swapValues() {
     document.getElementById('result').classList.add('show');
 
     // Swap input values
-    document.getElementById('value1').value = value2;
-    document.getElementById('value2').value = value1;
+    value1Input.value = value2;
+    value2Input.value = value1;
 }
 
 function resetForm() {
